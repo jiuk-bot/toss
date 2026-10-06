@@ -54,7 +54,7 @@
   .handoff .blue{color:#6ea8fe;font-weight:700;}
 
   /* 스코어러 */
-  .scorer{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start;}
+  .scorer{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:stretch;}
   @media(max-width:760px){.scorer{grid-template-columns:1fr;}}
   .scorer .inputs{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;}
   .fld{margin-bottom:16px;}
@@ -64,7 +64,7 @@
   .fld select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
               font-size:14px;font-family:inherit;color:var(--ink);background:#fff;}
   .result{position:sticky;top:76px;border-radius:18px;padding:26px 22px;text-align:center;
-          border:1px solid var(--line);transition:.25s;}
+          border:1px solid var(--line);transition:.25s;display:flex;flex-direction:column;justify-content:center;}
   .result .score{font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;}
   .result .grade{font-size:22px;font-weight:800;margin-top:8px;}
   .result .glabel{font-size:13px;color:var(--muted);margin-top:2px;}
@@ -88,7 +88,7 @@
   .ref-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
   .ref-chips button{border:1px solid var(--line);background:#fff;color:var(--body);font-family:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;cursor:pointer;}
   .ref-chips button:hover{border-color:var(--blue);color:var(--blue);}
-  .ref-card{background:#fff;border:2px solid var(--blue);border-radius:16px;padding:22px;margin-top:16px;box-shadow:0 10px 30px rgba(49,130,246,.16);}
+  .ref-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:16px;}
   .ref-card .rh{font-size:19px;font-weight:800;color:var(--ink);}
   .ref-card .rtag{display:inline-block;background:var(--blue-weak);color:var(--blue);font-weight:700;font-size:12px;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;}
   .ref-card .rsum{color:var(--body);font-size:14px;margin:8px 0 16px;line-height:1.55;}
@@ -200,6 +200,9 @@
   .cdesc b{color:var(--ink);}
   .crecap{display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin-top:20px;}
   .crecap span{font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-weak);border-radius:999px;padding:7px 14px;}
+  .demo-panel{border:2px solid var(--blue);border-radius:18px;padding:24px 20px 20px;background:#fff;box-shadow:0 12px 34px rgba(49,130,246,.14);position:relative;margin:18px 0 6px;}
+  .demo-panel::before{content:'인터랙티브 · 직접 조작해보세요';position:absolute;top:-11px;left:18px;background:var(--blue);color:#fff;font-size:11px;font-weight:800;padding:3px 11px;border-radius:999px;}
+  @media(max-width:720px){.demo-panel{padding:22px 14px 16px;}}
 </style>
 </head>
 <body>
@@ -277,12 +280,14 @@
       <div class="uarrow">→</div>
       <div class="ustep"><span class="un">3</span>광고주가 기준 잡고 AM 미팅 수락</div>
     </div>
-    <div class="ref-search">
+    <div class="demo-panel">
+      <div class="ref-search">
       <input id="refInput" placeholder="업종 검색 (예: 치과, 이커머스, 보험, 앱, 교육)" autocomplete="off" />
       <div class="ref-chips" id="refChips"></div>
     </div>
     <p class="note-sm" style="margin-top:12px;color:var(--red);font-weight:600;">※ 아래 지표·타겟팅·성공사례는 <b>예시(가설) 데이터</b>이며 실제 토스 수치가 아닙니다. (광고상품명은 실제 토스 상품)</p>
-    <div id="refResult"></div>
+      <div id="refResult"></div>
+    </div>
 
     <h3 style="font-size:16px;font-weight:800;margin:28px 0 10px;">입사 시 실데이터를 이렇게 넣습니다</h3>
     <div class="pipe">
@@ -384,7 +389,8 @@
     <h2 class="sec">③ 리드 스코어링 — 집행 시기 × 예산</h2>
     <p class="sec-sub">핵심은 <b>① 집행 시기 + ② 월 예산(90점)</b>이고, 등급은 점수 컷이 아니라 <b>"3개월 내 집행 AND 월 300만+"</b>라는 조건으로 정합니다(그래야 "왜 핫인지"가 설명됨). 광고 계획 구체성·지속의지(③④, 10점)는 <b>동점을 가르는 정밀 조정</b>입니다. 아래에서 직접 바꿔보세요.</p>
 
-    <div class="scorer">
+    <div class="demo-panel">
+      <div class="scorer">
       <div class="inputs">
         <div class="fld">
           <label>① 광고 집행 시기 <span class="w">· 핵심 · 최대 54점</span></label>
@@ -434,6 +440,7 @@
         <div class="bar"><i id="scoreBar" style="width:0%"></i></div>
         <div class="action" id="actionTxt"></div>
       </div>
+    </div>
     </div>
 
     <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">스코어링 기준표 (핵심 90 + 정밀 10)</h3>
