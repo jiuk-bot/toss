@@ -132,6 +132,34 @@
   .hchips span.blue{background:var(--blue-weak);border-color:var(--blue);color:var(--blue);}
   .hdown{color:var(--muted);font-size:11px;text-align:center;line-height:1;}
   .hcap{font-size:11.5px;color:var(--muted);line-height:1.5;}
+  .gcards{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;}
+  @media(max-width:720px){.gcards{grid-template-columns:1fr;}}
+  .gcard{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;border-top:4px solid var(--line);}
+  .gcard.g{border-top-color:var(--green);} .gcard.b{border-top-color:var(--blue);} .gcard.r{border-top-color:var(--red);}
+  .gcard .gh{font-size:16px;font-weight:800;margin-bottom:9px;}
+  .gcard.g .gh{color:var(--green);} .gcard.b .gh{color:var(--blue);} .gcard.r .gh{color:var(--red);}
+  .gcard .gcond{font-size:12.5px;color:var(--ink);line-height:1.5;background:var(--bg-soft);border-radius:8px;padding:9px 11px;margin-bottom:9px;}
+  .gcard .gcond span{color:var(--muted);font-size:11.5px;}
+  .gcard .gact{font-size:12.5px;color:var(--body);line-height:1.55;}
+  .fallback{background:#fff;border:1px solid var(--line);border-left:4px solid var(--blue);border-radius:12px;padding:16px 18px;margin-top:4px;}
+  .fbh{font-size:13.5px;font-weight:800;color:var(--ink);margin-bottom:12px;}
+  .fsteps{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;}
+  @media(max-width:720px){.fsteps{grid-template-columns:1fr 1fr;}}
+  .fs{background:var(--bg-soft);border-radius:10px;padding:11px 12px;font-size:12.5px;color:var(--body);line-height:1.5;}
+  .fs .fsn{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;margin-right:6px;}
+  .indg{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media(max-width:640px){.indg{grid-template-columns:1fr;}}
+  .icard{border:1px solid var(--line);border-radius:14px;padding:16px;background:#fff;}
+  .icard .ih{font-size:14.5px;font-weight:800;color:var(--ink);display:flex;align-items:center;gap:8px;flex-wrap:wrap;}
+  .icard .ibadge{font-size:11px;font-weight:700;color:var(--blue);background:var(--blue-weak);border-radius:999px;padding:2px 9px;}
+  .icard .iwhy{font-size:12.5px;color:var(--body);margin:7px 0 10px;line-height:1.5;}
+  .icard .isig{display:flex;flex-wrap:wrap;gap:6px;}
+  .icard .isig span{font-size:11.5px;color:var(--ink);background:var(--bg-soft);border:1px solid var(--line);border-radius:8px;padding:5px 9px;}
+  .dcards{display:grid;grid-template-columns:repeat(2,1fr);gap:12px;}
+  @media(max-width:640px){.dcards{grid-template-columns:1fr;}}
+  .dcard{background:#fff;border:1px solid var(--line);border-radius:12px;padding:14px 16px;}
+  .dcard .dct{font-size:13.5px;font-weight:800;color:var(--ink);margin-bottom:5px;}
+  .dcard .dcd{font-size:12.5px;color:var(--body);line-height:1.55;}
 </style>
 </head>
 <body>
@@ -237,13 +265,20 @@
     </table>
 
     <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">등급별 다음 단계</h3>
-    <table class="t">
-      <tr><th style="width:84px">등급</th><th style="width:230px">등급 조건</th><th>다음 단계</th></tr>
-      <tr><td class="g">핫 (A)</td><td><b>3개월 내 집행 + 월 300만+</b> (두 조건 모두 충족)</td><td><b>리드 품질 평가 → AM에 상담자료(핸드오프 노트) 전달</b> → 미팅 연결</td></tr>
-      <tr><td class="b">웜 (B)</td><td>두 조건 중 <b>하나만</b> 충족</td><td>제안자료 발송 → 집행 시기 임박 시점에 <b>재콜해 A로 승급</b></td></tr>
-      <tr><td class="r">콜드 (C)</td><td>두 조건 <b>모두 미충족</b></td><td>뉴스레터 너처링 → <b>분기 리터치</b> (시그널 변화 시 재스코어링)</td></tr>
-    </table>
-    <p class="note-sm">※ <b>핫 리드인데 AM 미팅이 당장 어려우면</b> — 리드를 식히지 않는 게 핵심: ① 24h 내 SDR가 먼저 유선으로 니즈·목표 재확인(방치 느낌 차단) ② 업종 성공사례 + 제안 요약 즉시 발송 ③ AM 가능한 가장 빠른 슬롯 2~3개를 제시해 미팅 날짜부터 선확정 ④ AM에게 '우선 핫리드'로 플래그해 대기열 최상단 배치.</p>
+    <div class="gcards">
+      <div class="gcard g"><div class="gh">핫 (A)</div><div class="gcond">3개월 내 집행 <b>AND</b> 월 300만+<br><span>두 조건 모두 충족</span></div><div class="gact">리드 품질 평가 → AM에 <b>상담자료 전달</b> → 미팅 연결</div></div>
+      <div class="gcard b"><div class="gh">웜 (B)</div><div class="gcond">두 조건 중 <b>하나만</b> 충족</div><div class="gact">제안자료 발송 → 시기 임박 시 <b>재콜해 A 승급</b></div></div>
+      <div class="gcard r"><div class="gh">콜드 (C)</div><div class="gcond">두 조건 <b>모두 미충족</b></div><div class="gact">너처링 → <b>분기 리터치</b> (시그널 변화 시 재스코어링)</div></div>
+    </div>
+    <div class="fallback">
+      <div class="fbh">핫 리드인데 AM 미팅이 당장 어려우면 — 리드를 식히지 않는 4단계</div>
+      <div class="fsteps">
+        <div class="fs"><span class="fsn">1</span>24h 내 SDR가 먼저 유선으로 니즈·목표 재확인 (방치 차단)</div>
+        <div class="fs"><span class="fsn">2</span>업종 성공사례 + 제안 요약 즉시 발송</div>
+        <div class="fs"><span class="fsn">3</span>AM 가능한 빠른 슬롯 2~3개 제시 → 미팅 날짜 선확정</div>
+        <div class="fs"><span class="fsn">4</span>AM에게 '우선 핫리드' 플래그 → 대기열 최상단</div>
+      </div>
+    </div>
 
     <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">AM 핸드오프 노트 (검증 리드 인계 템플릿)</h3>
     <div class="handoff">
@@ -259,10 +294,10 @@
     <p class="note-sm">※ <b>목적·일정·예산·성과목표</b>를 미리 받아 넘겨야 AM이 그 자리에서 <b>맞는 성공사례와 미디어믹스</b>를 제안할 수 있습니다. SDR의 산출물은 '리드 수'가 아니라 '이 노트의 질'입니다.</p>
 
     <h3 style="font-size:16px;font-weight:800;margin:24px 0 8px;">제가 미리 숙지할 것 (SDR 사전 준비)</h3>
-    <ul class="clean">
-      <li><b>토스 광고 상품 전반</b> — 지면·과금 방식·타게팅 옵션을 이해해야 콜에서 광고주 질문에 바로 답하고 핏을 판단할 수 있습니다.</li>
-      <li><b>업종별 성공사례</b> — 금융·앱·커머스 등 업종별 레퍼런스를 숙지해, 콜에서도 "이런 업종은 이런 성과가 났다"고 짧게 언급해 신뢰를 주고 미팅 전환율을 높입니다.</li>
-    </ul>
+    <div class="dcards">
+      <div class="dcard"><div class="dct">토스 광고 상품 전반</div><div class="dcd">지면·과금·타게팅 옵션 이해 → 콜에서 광고주 질문에 바로 답하고 핏 판단.</div></div>
+      <div class="dcard"><div class="dct">업종별 성공사례</div><div class="dcd">업종 레퍼런스 숙지 → "이 업종은 이런 성과" 언급으로 신뢰·미팅 전환↑.</div></div>
+    </div>
   </div>
 </section>
 
@@ -365,15 +400,15 @@
       <tr><td><b>1년 이후</b></td><td class="b">웜 40</td><td class="b">웜 33</td><td class="b">웜 26</td><td class="b">웜 19</td><td class="r">콜드 12</td><td class="r">콜드 7</td></tr>
     </table>
     </div>
-    <p class="note-sm"><span style="color:var(--green);font-weight:700">초록=핫</span> · <span style="color:var(--blue);font-weight:700">파랑=웜</span> · <span style="color:var(--red);font-weight:700">빨강=콜드</span>. 핫은 <b>좌상단(3개월 내 × 월 300만+)</b> 블록뿐 — 시기가 6개월 이상 멀면 예산이 아무리 커도 핫이 아니라 '우선순위 높은 웜'입니다(시기 우선). 표 숫자는 핵심 점수(①+②), 실제 점수는 정밀 조정 ③④⑤까지 반영.</p>
+    <p class="note-sm"><span style="color:var(--green);font-weight:700">초록=핫</span> · <span style="color:var(--blue);font-weight:700">파랑=웜</span> · <span style="color:var(--red);font-weight:700">빨강=콜드</span>. 핫은 <b>좌상단(3개월 내 × 월 300만+)</b> 블록뿐 — 시기가 6개월 이상 멀면 예산이 아무리 커도 핫이 아니라 '우선순위 높은 웜'입니다(시기 우선). 표 숫자는 핵심 점수(①+②), 실제 점수는 정밀 조정 ③④까지 반영.</p>
 
     <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">같은 등급 안에서의 우선순위 (상세 스코어링)</h3>
-    <ul class="clean">
-      <li><b>점수 = 처리 순서 큐</b> — 같은 핫이라도 90점 리드를 61점보다 먼저 인계. 100점 척도로 '오늘 누구부터 콜·인계할지'를 정합니다.</li>
-      <li><b>동점은 정밀 조정으로 해소</b> — 시기·예산이 같아 핵심 점수가 겹쳐도, 광고 계획 구체성·지속 의지(③④, 10점)로 대부분의 동점이 갈립니다.</li>
-      <li><b>그래도 동점이면</b> — ① 집행 시기가 더 임박 → ② 예산이 더 큰 리드 순 (시기 우선 원칙 동일).</li>
-      <li><b>일일 운영</b> — 핫 → 웜 순, 등급 내 점수 내림차순. 핫은 유입 당일, 웜은 48h 내 첫 콜.</li>
-    </ul>
+    <div class="dcards">
+      <div class="dcard"><div class="dct">점수 = 처리 순서 큐</div><div class="dcd">같은 핫이라도 90점을 61점보다 먼저 인계. '오늘 누구부터'를 정함.</div></div>
+      <div class="dcard"><div class="dct">동점은 정밀 조정으로 해소</div><div class="dcd">핵심 점수가 겹쳐도 광고 계획 구체성·지속 의지(③④, 10점)로 대부분 갈림.</div></div>
+      <div class="dcard"><div class="dct">그래도 동점이면</div><div class="dcd">① 집행 시기 더 임박 → ② 예산 더 큰 리드 순 (시기 우선).</div></div>
+      <div class="dcard"><div class="dct">일일 운영</div><div class="dcd">핫 → 웜 순, 등급 내 점수 내림차순. 핫은 당일, 웜은 48h 내 첫 콜.</div></div>
+    </div>
   </div>
 </section>
 
@@ -384,13 +419,12 @@
     <h2 class="sec">③ 업종별 핏 가이드 — 콜에서 빠르게 판단</h2>
     <p class="sec-sub">인바운드 콜에서 "이 광고주가 토스에서 성과 낼 핏인지"를 몇 초 안에 가늠하려면, 업종별 적합도와 핫 시그널을 미리 정리해 둬야 합니다. 핏이 높은 업종은 더 공들여 검증하고, 낮은 업종엔 시간을 덜 씁니다. 토스 유저층(금융 관여도 높은 2030~5060)을 기준으로 정리했습니다.</p>
 
-    <table class="t">
-      <tr><th style="width:160px">업종</th><th>토스 핏 (왜)</th><th style="width:230px">콜에서 확인할 핫 시그널</th></tr>
-      <tr><td class="b">핀테크·금융 서비스</td><td>토스 유저와 맥락 일치(금융 관여)·전환 친화. 가장 높은 핏.</td><td>월 예산 300만+ · 앱설치/가입 목표 · 집행 임박</td></tr>
-      <tr><td class="b">앱 서비스(설치 목표)</td><td>토스 지면이 앱 설치·회원가입 전환에 강점.</td><td>CPI/CPA 목표 명확 · 타 채널 단가 상승 호소</td></tr>
-      <tr><td class="b">커머스·구독</td><td>2030~4050 소비층 도달. 성과형 광고 수요 큼.</td><td>ROAS 목표 보유 · 전환 추적(픽셀/이벤트) 세팅됨</td></tr>
-      <tr><td class="b">고관여 상품(보험·대출·투자)</td><td>객단가 높아 리드 1건의 가치 큼 = 예산 여력 큼.</td><td>리드 단가 수용도 높음 · 지속 집행 의지</td></tr>
-    </table>
+    <div class="indg">
+      <div class="icard"><div class="ih">핀테크·금융 서비스<span class="ibadge">핏 최상</span></div><div class="iwhy">토스 유저와 맥락 일치(금융 관여)·전환 친화.</div><div class="isig"><span>월 예산 300만+</span><span>앱설치/가입 목표</span><span>집행 임박</span></div></div>
+      <div class="icard"><div class="ih">앱 서비스 (설치 목표)<span class="ibadge">핏 높음</span></div><div class="iwhy">토스 지면이 앱 설치·회원가입 전환에 강점.</div><div class="isig"><span>CPI/CPA 목표 명확</span><span>타 채널 단가 상승</span></div></div>
+      <div class="icard"><div class="ih">커머스·구독<span class="ibadge">핏 높음</span></div><div class="iwhy">2030~4050 소비층 도달, 성과형 수요 큼.</div><div class="isig"><span>ROAS 목표 보유</span><span>전환 추적 세팅</span></div></div>
+      <div class="icard"><div class="ih">고관여 상품 (보험·대출·투자)<span class="ibadge">핏 높음</span></div><div class="iwhy">객단가 높아 리드 1건 가치·예산 여력 큼.</div><div class="isig"><span>리드 단가 수용도↑</span><span>지속 집행 의지</span></div></div>
+    </div>
     <p class="note-sm"><b>왜 필요한가</b> — SDR은 들어오는 리드를 '똑같이'가 아니라 '핏 순서대로' 검증해야 합니다. 업종 핏을 미리 알면 콜 초반 1~2분에 우선순위를 판단하고, 핏 높은 리드에 시간을 집중할 수 있습니다. (순수 발굴·아웃바운드가 아니라, 인바운드 콜의 핏 판단 기준입니다.)</p>
 
   </div>
