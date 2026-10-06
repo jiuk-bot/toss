@@ -172,6 +172,20 @@
   .atbody p{font-size:13px;color:var(--body);line-height:1.65;margin-top:12px;}
   .atbody p b{color:var(--ink);}
   .atarrow{display:flex;align-items:center;justify-content:center;color:var(--muted);font-weight:800;font-size:22px;}
+  .usehow{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;gap:10px;align-items:center;margin:4px 0 18px;}
+  @media(max-width:720px){.usehow{grid-template-columns:1fr;}.usehow .uarrow{transform:rotate(90deg);justify-self:center;}}
+  .ustep{background:#fff;border:1px solid var(--line);border-radius:12px;padding:13px 14px;font-size:13px;font-weight:700;color:var(--ink);line-height:1.5;}
+  .ustep small{font-weight:500;color:var(--muted);font-size:11.5px;}
+  .ustep .un{display:inline-flex;align-items:center;justify-content:center;width:20px;height:20px;border-radius:6px;background:var(--blue);color:#fff;font-size:12px;font-weight:800;margin-right:7px;}
+  .uarrow{color:var(--muted);font-weight:800;font-size:18px;text-align:center;}
+  .pipe{display:grid;grid-template-columns:1.6fr auto 1fr;gap:12px;align-items:center;}
+  @media(max-width:720px){.pipe{grid-template-columns:1fr;}.pipe .parrow{transform:rotate(90deg);justify-self:center;}}
+  .psrcs{display:flex;flex-direction:column;gap:8px;}
+  .psrc{background:#fff;border:1px solid var(--line);border-radius:10px;padding:10px 13px;font-size:13px;font-weight:700;color:var(--ink);display:flex;justify-content:space-between;align-items:center;gap:8px;flex-wrap:wrap;}
+  .psrc small{font-weight:500;color:var(--muted);font-size:11.5px;}
+  .parrow{color:var(--muted);font-weight:800;font-size:20px;text-align:center;}
+  .pdest{background:var(--blue-weak);border:1px solid var(--blue);border-radius:12px;padding:16px;font-size:14px;font-weight:800;color:var(--blue);text-align:center;line-height:1.5;}
+  .pdest small{display:block;font-weight:600;color:#1b64da;font-size:11.5px;margin-top:3px;}
 </style>
 </head>
 <body>
@@ -242,13 +256,37 @@
   <div class="wrap">
     <div class="jd-tag">가설의 해결책 · 직접 개발 (예시 데이터)</div>
     <h2 class="sec">① 업종 레퍼런스 즉시 조회 대시보드</h2>
-    <p class="sec-sub">토스 상담 템플릿은 광고주에게 <b>'집행 희망 상품(배너·머니 알림·행운 퀴즈 등)'을 직접 고르라</b>고 하지만, 초기 광고주는 상품을 몰라 답하기 어렵습니다. 이 대시보드로 <b>유사 업종이 어떤 지면에서 성과가 좋았는지 먼저 제시</b>하면 광고주가 그걸 기준으로 상품을 정하고 AM 미팅 의향도 올라갑니다. 업종을 검색하세요 — <b>유사어·동의어(예: '임플란트'→치과)로도 매칭</b>됩니다. <b>(※ 지표·타겟팅·성공사례는 예시(가설) 데이터로 실제 토스 수치가 아닙니다. 광고상품명만 실제 토스 상품 — 실제 레퍼런스 연동 시 교체)</b></p>
+    <p class="sec-sub">초기 광고주는 토스 상담 템플릿의 <b>'집행 희망 상품'</b>을 바로 고르기 어렵습니다(상품을 모름). 업종만 입력하면 <b>유사 업종이 어떤 지면에서 성과가 좋았는지 먼저 보여줘</b>, 광고주가 기준을 잡고 AM 미팅까지 매끄럽게 잇습니다.</p>
+    <div class="usehow">
+      <div class="ustep"><span class="un">1</span>상담 중 업종 입력<br /><small>유사어·동의어도 매칭 (임플란트 → 치과)</small></div>
+      <div class="uarrow">→</div>
+      <div class="ustep"><span class="un">2</span>레퍼런스·광고상품·성공사례 즉시 표시</div>
+      <div class="uarrow">→</div>
+      <div class="ustep"><span class="un">3</span>광고주가 기준 잡고 AM 미팅 수락</div>
+    </div>
     <div class="ref-search">
       <input id="refInput" placeholder="업종 검색 (예: 치과, 이커머스, 보험, 앱, 교육)" autocomplete="off" />
       <div class="ref-chips" id="refChips"></div>
     </div>
     <p class="note-sm" style="margin-top:12px;color:var(--red);font-weight:600;">※ 아래 지표·타겟팅·성공사례는 <b>예시(가설) 데이터</b>이며 실제 토스 수치가 아닙니다. (광고상품명은 실제 토스 상품)</p>
     <div id="refResult"></div>
+
+    <h3 style="font-size:16px;font-weight:800;margin:28px 0 10px;">입사 시 실데이터를 이렇게 넣습니다</h3>
+    <div class="pipe">
+      <div class="psrcs">
+        <div class="psrc">토스 레퍼런스 시트 <small>업종별 CTR·CPC</small></div>
+        <div class="psrc">광고상품 소개서 <small>상품·지면·과금</small></div>
+        <div class="psrc">토스애즈 인사이트 <small>업종별 성공사례</small></div>
+      </div>
+      <div class="parrow">→</div>
+      <div class="pdest">이 대시보드<small>업종별 카드로 즉시 조회</small></div>
+    </div>
+    <div class="dcards" style="margin-top:12px;">
+      <div class="dcard"><div class="dct">구조는 그대로, 수치만 교체</div><div class="dcd">이미 '업종 → 지표·상품·사례' 구조라, 토스 시트·소개서의 실수치를 매핑만 하면 바로 실무용입니다.</div></div>
+      <div class="dcard"><div class="dct">자동 갱신</div><div class="dcd">내부 레퍼런스 시트를 구글시트 API·CSV로 연동해 주기적으로 자동 업데이트합니다.</div></div>
+      <div class="dcard"><div class="dct">검색 고도화</div><div class="dcd">현재 동의어 사전 매칭 → 추후 임베딩 기반 시맨틱 검색으로 어떤 표현이든 업종 매칭.</div></div>
+      <div class="dcard"><div class="dct">AM 핸드오프 연동</div><div class="dcd">조회 결과를 핸드오프 노트에 자동 첨부 → AM이 레퍼런스까지 받아 바로 제안.</div></div>
+    </div>
   </div>
 </section>
 
