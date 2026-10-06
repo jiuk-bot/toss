@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>윤지욱 · 토스 Ads SDR 플레이북 — 리드 퀄리파이 · 스코어링 · 광고주 발굴</title>
+<meta name="description" content="토스 Ads SDR 직무에 맞춘 실전 자료 — 인바운드 광고주 리드를 콜로 검증하는 퀄리파이 플레이북, 실시간 리드 스코어링(A/B/C 등급), 광고주 세그먼트 발굴 리포트." />
+<link rel="stylesheet" href="assets/style.css" />
+<style>
+  @import url('https://cdn.jsdelivr.net/gh/orioncactus/pretendard@latest/dist/web/static/pretendard.css');
+  body{font-family:'Pretendard','Apple SD Gothic Neo',sans-serif;}
+  .page-hero{padding:48px 0 8px;}
+  .page-hero h1{font-size:40px;font-weight:800;letter-spacing:-.03em;line-height:1.18;margin:10px 0 16px;}
+  .page-hero h1 .hl{color:var(--blue);}
+  .page-hero .lead{font-size:17px;color:var(--body);line-height:1.6;max-width:760px;}
+  section.blk{padding:40px 0;border-top:1px solid var(--line);}
+  section.blk:first-of-type{border-top:0;}
+  h2.sec{font-size:26px;font-weight:800;letter-spacing:-.02em;margin:4px 0 6px;}
+  .sec-sub{color:var(--body);font-size:15px;margin-bottom:22px;line-height:1.6;max-width:780px;}
+  .jd-tag{display:inline-block;background:var(--blue-weak);color:var(--blue);font-weight:700;
+          font-size:12.5px;padding:4px 10px;border-radius:999px;margin-bottom:12px;}
+
+  /* 콜 플로우 단계 */
+  .flow{display:grid;grid-template-columns:repeat(5,1fr);gap:10px;margin:8px 0 26px;}
+  .flow .step{background:var(--bg-soft);border:1px solid var(--line);border-radius:14px;padding:14px 12px;}
+  .flow .step .n{font-size:12px;font-weight:800;color:var(--blue);}
+  .flow .step .t{font-size:14px;font-weight:700;margin-top:4px;color:var(--ink);}
+  .flow .step .d{font-size:12px;color:var(--muted);margin-top:4px;line-height:1.45;}
+  @media(max-width:760px){.flow{grid-template-columns:repeat(2,1fr);}}
+
+  /* 스크립트 말풍선 */
+  .script{background:#fff;border:1px solid var(--line);border-radius:16px;padding:20px 22px;margin-bottom:16px;}
+  .script .line{margin:10px 0;display:flex;gap:10px;align-items:flex-start;}
+  .script .who{flex:0 0 46px;font-size:12px;font-weight:800;padding-top:2px;}
+  .script .who.me{color:var(--blue);}
+  .script .who.lead{color:var(--muted);}
+  .script .msg{font-size:14.5px;line-height:1.6;color:var(--ink);}
+  .script .msg em{font-style:normal;color:var(--blue);font-weight:700;}
+  .script .note{font-size:12.5px;color:var(--muted);margin:2px 0 2px 56px;}
+
+  /* 표 공통 */
+  table.t{width:100%;border-collapse:collapse;margin:6px 0 10px;font-size:13.5px;}
+  table.t th,table.t td{border:1px solid var(--line);padding:9px 12px;text-align:left;vertical-align:top;line-height:1.5;}
+  table.t th{background:var(--bg-soft);font-weight:700;color:var(--ink);white-space:nowrap;}
+  table.t td{color:var(--body);}
+  table.t .g{color:var(--green);font-weight:700;}
+  table.t .r{color:var(--red);font-weight:700;}
+  table.t .b{color:var(--blue);font-weight:700;}
+
+  /* 핸드오프 노트 */
+  .handoff{background:#0f1116;color:#e4e7ec;border-radius:16px;padding:20px 22px;font-size:13.5px;line-height:1.7;}
+  .handoff .h{color:#8b95a1;font-weight:700;font-size:12px;letter-spacing:.04em;margin-bottom:8px;}
+  .handoff b{color:#fff;}
+  .handoff .blue{color:#6ea8fe;font-weight:700;}
+
+  /* 스코어러 */
+  .scorer{display:grid;grid-template-columns:1.3fr 1fr;gap:20px;align-items:start;}
+  @media(max-width:760px){.scorer{grid-template-columns:1fr;}}
+  .scorer .inputs{background:#fff;border:1px solid var(--line);border-radius:18px;padding:22px;}
+  .fld{margin-bottom:16px;}
+  .fld:last-child{margin-bottom:0;}
+  .fld label{display:block;font-size:13.5px;font-weight:700;color:var(--ink);margin-bottom:6px;}
+  .fld label .w{color:var(--muted);font-weight:600;font-size:12px;}
+  .fld select{width:100%;padding:10px 12px;border:1px solid var(--line);border-radius:10px;
+              font-size:14px;font-family:inherit;color:var(--ink);background:#fff;}
+  .result{position:sticky;top:76px;border-radius:18px;padding:26px 22px;text-align:center;
+          border:1px solid var(--line);transition:.25s;}
+  .result .score{font-size:56px;font-weight:800;letter-spacing:-.03em;line-height:1;}
+  .result .grade{font-size:22px;font-weight:800;margin-top:8px;}
+  .result .glabel{font-size:13px;color:var(--muted);margin-top:2px;}
+  .result .bar{height:8px;border-radius:999px;background:var(--line);margin:16px 0 14px;overflow:hidden;}
+  .result .bar i{display:block;height:100%;border-radius:999px;transition:.3s;}
+  .result .action{font-size:13.5px;line-height:1.6;color:var(--ink);text-align:left;
+                  background:#fff;border:1px solid var(--line);border-radius:12px;padding:12px 14px;margin-top:6px;}
+  .result .action b{font-weight:800;}
+
+  ul.clean{list-style:none;padding:0;margin:0;}
+  ul.clean li{position:relative;padding-left:18px;margin:7px 0;font-size:14px;color:var(--body);line-height:1.55;}
+  ul.clean li::before{content:'';position:absolute;left:0;top:8px;width:6px;height:6px;border-radius:2px;background:var(--blue);}
+  ul.clean li b{color:var(--ink);font-weight:700;}
+  .note-sm{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
+</style>
+</head>
+<body>
+
+<nav class="nav">
+  <div class="nav-inner">
+    <a class="nav-logo" href="index.html">JIUK<span class="dot">.</span>YOON</a>
+    <div class="nav-links">
+      <a href="index.html">Home</a>
+      <a href="portfolio.html">Portfolio</a>
+      <a href="resume.html">이력서</a>
+      <a href="sdr.html" class="active">SDR</a>
+      <a class="cta" href="https://marketing-dashboard-demo-br6gpdt4i2yrshdygxanp8.streamlit.app/" target="_blank" rel="noopener">▶ Live Demo</a>
+    </div>
+  </div>
+</nav>
+
+<header class="page-hero">
+  <div class="wrap">
+    <div class="eyebrow">TOSS ADS · SALES DEVELOPMENT</div>
+    <h1>인바운드 광고주 리드를 콜로 검증하고,<br /><span class="hl">데이터로 등급을 매겨 AM에게 넘깁니다.</span></h1>
+    <p class="lead">
+      토스 Ads SDR 업무를 그대로 실행해본 자료입니다. ① 콜로 니즈·예산을 파악하는 <b>퀄리파이 플레이북</b>,
+      ② 리드를 A·B·C로 가르는 <b>실시간 스코어링</b>, ③ 어떤 광고주를 먼저 공략할지 정리한 <b>광고주 발굴 리포트</b>.
+      "리드를 많이 넘기는" 게 아니라 "AM이 바로 제안 들어갈 수 있는 리드만 깨끗하게 넘기는" 걸 목표로 설계했습니다.
+    </p>
+  </div>
+</header>
+
+<!-- ───────── 1. 콜 퀄리파이 플레이북 ───────── -->
+<section class="blk">
+  <div class="wrap">
+    <div class="jd-tag">JD · 콜/이메일 1차 컨택 → 니즈·예산 파악</div>
+    <h2 class="sec">① 리드 퀄리파이 콜 플레이북</h2>
+    <p class="sec-sub">인바운드 광고 문의 리드에게 전화를 걸어, 5단계로 니즈·예산·결정권·시기를 파악하고 다음 단계를 정리합니다. 목표는 '설득'이 아니라 '검증' — 이 리드가 지금 AM에게 넘길 리드인지 가려내는 것.</p>
+
+    <div class="flow">
+      <div class="step"><div class="n">STEP 1</div><div class="t">오프닝 (15초)</div><div class="d">신원·전화 이유·양해. 부담 없이 짧게.</div></div>
+      <div class="step"><div class="n">STEP 2</div><div class="t">상황 파악</div><div class="d">지금 어떤 광고를? 왜 토스에 관심?</div></div>
+      <div class="step"><div class="n">STEP 3</div><div class="t">BANT 진단</div><div class="d">예산·결정권·니즈·시기 핵심 4개.</div></div>
+      <div class="step"><div class="n">STEP 4</div><div class="t">핏 체크</div><div class="d">타겟·업종이 토스 유저층과 맞는지.</div></div>
+      <div class="step"><div class="n">STEP 5</div><div class="t">넥스트스텝</div><div class="d">핫=AM 연결 / 웜=자료+리마인드.</div></div>
+    </div>
+
+    <div class="script">
+      <div class="line"><div class="who me">나</div><div class="msg">안녕하세요 대표님, 토스 광고 문의 주셔서 연락드린 윤지욱입니다. <em>2분만</em> 지금 어떤 광고를 고민 중이신지 여쭤봐도 될까요?</div></div>
+      <div class="note">→ 오프닝은 "팔려고" 가 아니라 "들으려고" 왔다는 신호. 시간 양해를 먼저 구함.</div>
+      <div class="line"><div class="who lead">리드</div><div class="msg">네, 지금 인스타 광고 돌리는데 전환 단가가 너무 올라서요. 토스도 가능한가 해서요.</div></div>
+      <div class="line"><div class="who me">나</div><div class="msg">전환 단가 때문에 새 채널을 보고 계시군요. <em>현재 월 광고 예산은 대략 어느 정도</em>로 운영 중이세요? 그리고 광고 집행은 대표님이 직접 결정하시나요?</div></div>
+      <div class="note">→ Budget + Authority를 자연스럽게 한 번에. "불만(전환 단가↑)"을 되짚어 Need를 확인.</div>
+      <div class="line"><div class="who lead">리드</div><div class="msg">월 400~500 정도요. 제가 직접 봐요. 다음 달부터는 늘릴 생각이에요.</div></div>
+      <div class="line"><div class="who me">나</div><div class="msg">좋습니다. 그럼 <em>다음 달 집행</em>을 목표로, 토스에서 어떤 유저에게 닿고 싶으신지만 확인하면 담당 AM이 바로 맞춤 제안 드릴 수 있어요. 주 타겟 연령대가 어떻게 되세요?</div></div>
+      <div class="note">→ Timeline 확정 + Fit 질문. 바로 AM 핸드오프로 연결(핫리드 신호).</div>
+    </div>
+
+    <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">BANT + Fit 질문 세트</h3>
+    <table class="t">
+      <tr><th style="width:92px">항목</th><th>핵심 질문</th><th style="width:230px">무엇을 듣는가</th></tr>
+      <tr><td class="b">Budget</td><td>"현재 월 광고 예산은 대략 어느 정도세요?"</td><td>집행 규모 → 우선순위·AM 등급</td></tr>
+      <tr><td class="b">Authority</td><td>"광고 집행은 대표님이 직접 결정하세요?"</td><td>의사결정자 여부 → 핸드오프 대상</td></tr>
+      <tr><td class="b">Need</td><td>"지금 광고에서 가장 아쉬운 부분이 뭐예요?"</td><td>명확한 목표·불만(전환↓/단가↑)</td></tr>
+      <tr><td class="b">Timeline</td><td>"언제쯤 집행을 시작하고 싶으세요?"</td><td>집행 시점 → 핫/웜 분기</td></tr>
+      <tr><td class="b">Fit</td><td>"주 타겟 연령·업종이 어떻게 되세요?"</td><td>토스 유저층 적합도</td></tr>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">핫 / 웜 / 콜드 판별 기준</h3>
+    <table class="t">
+      <tr><th style="width:80px">등급</th><th>조건</th><th style="width:260px">다음 단계</th></tr>
+      <tr><td class="g">🔥 핫</td><td>예산 확보 + 결정권자 + 명확한 니즈 + 1개월 내 집행</td><td><b>즉시 AM 미팅 연결</b> + 핸드오프 노트 작성</td></tr>
+      <tr><td class="b">🌤 웜</td><td>관심은 분명하나 예산·시기 미확정, 또는 실무자 컨택</td><td>제안자료 발송 → <b>D+3 리마인드 콜</b>로 재검증</td></tr>
+      <tr><td class="r">❄ 콜드</td><td>예산 없음 / 단순 탐색 / 타겟 비적합</td><td>뉴스레터 너처링 → 분기별 리터치</td></tr>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">AM 핸드오프 노트 (검증 리드 인계 템플릿)</h3>
+    <div class="handoff">
+      <div class="h">LEAD HANDOFF — AM 전달용</div>
+      <b>광고주</b> ○○○ (커머스/패션) · 대표 직접 운영 <span class="blue">[결정권자 ✓]</span><br />
+      <b>예산</b> 월 400~500만 → 다음 달 증액 의향 · <b>집행 시기</b> 다음 달(1개월 내)<br />
+      <b>니즈</b> 인스타 전환 단가 상승 → 신규 채널로 CPA 개선 희망 <span class="blue">[명확한 불만 ✓]</span><br />
+      <b>타겟</b> 2535 여성 · 패션 커머스 → 토스 유저층 적합<br />
+      <b>스코어</b> <span class="blue">82점 / A등급(핫)</span> · <b>추천</b> 바로 미팅 → CPA 개선 레퍼런스 중심 제안<br />
+      <b>다음 액션</b> 이번 주 내 AM 미팅 세팅 (리드 선호: 화/목 오후)
+    </div>
+    <p class="note-sm">※ 이 노트가 있어야 AM이 "처음부터 다시 묻지 않고" 바로 제안에 들어갈 수 있습니다. SDR의 산출물은 '리드 수'가 아니라 '이 노트의 질'입니다.</p>
+  </div>
+</section>
+
+<!-- ───────── 2. 리드 스코어링 (인터랙티브) ───────── -->
+<section class="blk section-soft">
+  <div class="wrap">
+    <div class="jd-tag">JD · 우선순위 등급으로 분류</div>
+    <h2 class="sec">② 리드 스코어링 — 실시간 A/B/C 등급</h2>
+    <p class="sec-sub">콜에서 파악한 5개 축(예산·결정권·니즈·시기·적합도)을 점수화해 리드를 자동으로 A·B·C로 가릅니다. 감이 아니라 같은 기준으로 매기니, 누가 봐도 왜 이 리드가 우선인지 설명됩니다. 아래에서 직접 바꿔보세요.</p>
+
+    <div class="scorer">
+      <div class="inputs">
+        <div class="fld">
+          <label>💰 예산 (Budget) <span class="w">· 월 광고 예산</span></label>
+          <select id="budget">
+            <option value="30">월 500만원 이상</option>
+            <option value="22" selected>월 100~500만원</option>
+            <option value="10">월 50~100만원</option>
+            <option value="3">월 50만원 미만 / 미정</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>👤 결정권 (Authority) <span class="w">· 집행 의사결정</span></label>
+          <select id="authority">
+            <option value="20" selected>대표/의사결정자 본인</option>
+            <option value="12">결정에 영향 주는 담당</option>
+            <option value="5">실무자 (전달만 가능)</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>🎯 니즈 (Need) <span class="w">· 목표의 명확성</span></label>
+          <select id="need">
+            <option value="25" selected>명확한 목표 + 현 채널 불만</option>
+            <option value="15">목표는 있으나 모호</option>
+            <option value="6">단순 탐색 / 정보 수집</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>⏱ 시기 (Timeline) <span class="w">· 집행 시점</span></label>
+          <select id="timeline">
+            <option value="15" selected>1개월 이내</option>
+            <option value="9">1~3개월</option>
+            <option value="3">3개월 이후 / 미정</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>🧩 적합도 (Fit) <span class="w">· 토스 유저층 매칭</span></label>
+          <select id="fit">
+            <option value="10" selected>핵심 업종(금융·앱·커머스)+타겟 적합</option>
+            <option value="6">일부 적합</option>
+            <option value="2">적합도 낮음</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="result" id="resultCard">
+        <div class="score" id="scoreNum">0</div>
+        <div class="grade" id="gradeTxt">—</div>
+        <div class="glabel" id="gradeLabel">점수를 선택하세요</div>
+        <div class="bar"><i id="scoreBar" style="width:0%"></i></div>
+        <div class="action" id="actionTxt"></div>
+      </div>
+    </div>
+    <p class="note-sm">가중치: 예산 30 · 니즈 25 · 결정권 20 · 시기 15 · 적합도 10 (합 100) — 예산·니즈를 가장 무겁게 둔 건, 토스 Ads에서 실제 집행·전환으로 이어지는 핵심 변수이기 때문입니다.</p>
+  </div>
+</section>
+
+<!-- ───────── 3. 광고주 발굴 리포트 ───────── -->
+<section class="blk">
+  <div class="wrap">
+    <div class="jd-tag">JD · 소스·채널별 리드 품질 분석 → 마케팅팀 공유</div>
+    <h2 class="sec">③ 토스 Ads 광고주 발굴 리포트</h2>
+    <p class="sec-sub">인바운드만 받는 게 아니라, "어떤 광고주가 토스에서 성공할 가능성이 높은가"를 먼저 정의해두면 콜에서 빠르게 핏을 판단하고 마케팅팀에 "이런 소스를 더 모아달라"고 역제안할 수 있습니다. 토스 유저층(금융 관여도 높은 2030~5060)을 기준으로 우선순위를 가설화했습니다.</p>
+
+    <table class="t">
+      <tr><th style="width:150px">우선 세그먼트</th><th>왜 우선인가</th><th style="width:220px">핫리드 시그널</th></tr>
+      <tr><td class="b">핀테크·금융 서비스</td><td>토스 유저와 맥락 일치(금융 관여)·전환 친화. 가장 높은 핏.</td><td>월 예산 300만+ · 앱설치/가입 목표 · 집행 임박</td></tr>
+      <tr><td class="b">앱 서비스(설치 목표)</td><td>토스 지면이 앱 설치·회원가입 전환에 강점.</td><td>CPI/CPA 목표 명확 · 타 채널 단가 상승 호소</td></tr>
+      <tr><td class="b">커머스·구독</td><td>2030~4050 소비층 도달. 성과형 광고 수요 큼.</td><td>ROAS 목표 보유 · 전환 추적(픽셀/이벤트) 세팅됨</td></tr>
+      <tr><td class="b">고관여 상품(보험·대출·투자)</td><td>객단가 높아 리드 1건의 가치 큼 = 예산 여력 큼.</td><td>리드 단가 수용도 높음 · 지속 집행 의지</td></tr>
+    </table>
+
+    <h3 style="font-size:16px;font-weight:800;margin:24px 0 8px;">인바운드 소스별 리드 품질 가설 (→ 마케팅팀 피드백 루프)</h3>
+    <table class="t">
+      <tr><th style="width:200px">리드 소스</th><th>예상 품질</th><th>SDR 액션</th></tr>
+      <tr><td>세일즈 랜딩 "상담 신청" 폼</td><td class="g">상</td><td>최우선 콜 · 24h 내 컨택</td></tr>
+      <tr><td>가격/제안서 다운로드</td><td class="g">상~중</td><td>니즈 뚜렷 → 예산·시기 중심 검증</td></tr>
+      <tr><td>웨비나·콘텐츠 구독</td><td class="b">중</td><td>너처링 후 타이밍 콜</td></tr>
+      <tr><td>단순 뉴스레터 등록</td><td class="r">하</td><td>자동 너처링 → 시그널 뜨면 콜</td></tr>
+    </table>
+    <ul class="clean" style="margin-top:14px;">
+      <li><b>중복 필터링:</b> 같은 번호·도메인의 반복 유입은 파이프라인에서 병합 — AM이 같은 광고주에게 중복 컨택하지 않도록 (전 직장에서 중복DB율 지표를 직접 설계해 운영한 경험 보유).</li>
+      <li><b>피드백 루프:</b> 소스별 전환율(콜→미팅→계약)을 주간으로 집계해 "A등급이 많이 나오는 소스"를 마케팅팀에 공유 → 그 소스에 리드 모집 집중 제안.</li>
+      <li><b>데이터 위생:</b> 모든 콜 결과를 즉시 기록(등급·사유·다음 액션)해 파이프라인을 항상 '다음 사람이 바로 이어받을 수 있는' 상태로 유지.</li>
+    </ul>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    <div>© 2026 윤지욱 (JIUK.YOON) · 세일즈 · 리드 (SDR)</div>
+    <div><a href="https://github.com/jiuk-bot" target="_blank" rel="noopener">GitHub</a> · <a href="mailto:jiuk2038@gmail.com">Email</a></div>
+  </div>
+</footer>
+
+<script>
+  var F = ['budget','authority','need','timeline','fit'];
+  function calc(){
+    var s = 0;
+    F.forEach(function(id){ s += parseInt(document.getElementById(id).value,10); });
+    var grade, glabel, color, action;
+    if (s >= 70){
+      grade='A등급 🔥 핫리드'; glabel='즉시 AM에게 인계'; color='#15C47E';
+      action='<b>바로 AM 미팅 연결.</b> 핸드오프 노트(예산·니즈·시기·타겟) 작성해 이번 주 내 미팅 세팅. 리드 식지 않게 24시간 내 다음 액션.';
+    } else if (s >= 45){
+      grade='B등급 🌤 웜리드'; glabel='너처링 후 재검증'; color='#3182F6';
+      action='<b>제안자료 발송 + D+3 리마인드 콜.</b> 미확정인 예산·시기를 다시 확인해 A로 끌어올리거나 명확히 분기.';
+    } else {
+      grade='C등급 ❄ 콜드리드'; glabel='보류 · 자동 너처링'; color='#F04452';
+      action='<b>뉴스레터 너처링 + 분기 리터치.</b> 지금 AM 리소스를 쓰기엔 이르다 — 시그널(예산 확보·집행 임박)이 뜨면 재콜.';
+    }
+    document.getElementById('scoreNum').textContent = s;
+    document.getElementById('scoreNum').style.color = color;
+    document.getElementById('gradeTxt').textContent = grade;
+    document.getElementById('gradeTxt').style.color = color;
+    document.getElementById('gradeLabel').textContent = glabel;
+    document.getElementById('actionTxt').innerHTML = action;
+    var bar = document.getElementById('scoreBar');
+    bar.style.width = s + '%'; bar.style.background = color;
+    document.getElementById('resultCard').style.background = color + '12';
+    document.getElementById('resultCard').style.borderColor = color + '55';
+  }
+  F.forEach(function(id){ document.getElementById(id).addEventListener('change', calc); });
+  calc();
+</script>
+
+</body>
+</html>
