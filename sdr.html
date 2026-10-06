@@ -379,7 +379,7 @@
       <div class="pcard main">
         <div class="plabel blue">제안</div>
         <div class="coupon"><div class="cv">15%</div><div class="cl">첫 달 광고비 페이백 이벤트 쿠폰</div></div>
-        <div class="psmall"><b>왜 페이백?</b> 정액 지원과 달리 <b>실제 집행액에 비례</b>해 돌려줘, 광고주의 <b>첫 광고 집행 부담</b>을 낮춥니다 → <b>집행 전환 허들↓</b>. (첫 달 집행비의 15% 환급, 전략은 2차 AM)</div>
+        <div class="psmall"><b>왜 페이백?</b> 정액 지원과 달리 <b>실제 집행액에 비례</b>해 돌려줘, 광고주의 <b>첫 광고 집행 부담</b>을 낮춥니다 → <b>집행 전환 허들↓</b>. <span style="display:inline-block">(첫 달 집행비의 15% 환급, 전략은 2차 AM)</span></div>
       </div>
       <div class="parrow2">→</div>
       <div class="pcard">
@@ -587,8 +587,8 @@
     <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">같은 등급 안에서의 우선순위 (상세 스코어링)</h3>
     <div class="dcards">
       <div class="dcard"><div class="dct">점수 = 처리 순서 큐</div><div class="dcd">같은 핫이라도 90점을 61점보다 먼저 인계. '오늘 누구부터'를 정함.</div></div>
-      <div class="dcard"><div class="dct">동점은 정밀 조정으로 해소</div><div class="dcd">핵심 점수가 겹쳐도 광고 계획 구체성·지속 의지(③④, 10점)로 대부분 갈림.</div></div>
-      <div class="dcard"><div class="dct">그래도 동점이면</div><div class="dcd">① 집행 시기 더 임박 → ② 예산 더 큰 리드 순 (시기 우선).</div></div>
+      <div class="dcard"><div class="dct">동점은 정밀 조정으로 해소</div><div class="dcd">핵심 점수가 겹쳐도 광고 계획 구체성·지속 의지<span style="display:inline-block">(③④, 10점)</span>로 대부분 갈림.</div></div>
+      <div class="dcard"><div class="dct">그래도 동점이면</div><div class="dcd">① 집행 시기 더 임박 → ② 예산 더 큰 리드 순 <span style="display:inline-block">(시기 우선).</span></div></div>
       <div class="dcard"><div class="dct">일일 운영</div><div class="dcd">핫 → 웜 순, 등급 내 점수 내림차순. 핫은 당일, 웜은 48h 내 첫 콜.</div></div>
     </div>
   </div>
@@ -733,7 +733,7 @@
       '<div class="m"><div class="v">'+won(clicks)+'</div><div class="l">예상 클릭</div></div>'+
       '<div class="m"><div class="v">'+won(conv)+'</div><div class="l">예상 '+cv+'</div></div>'+
       '<div class="m"><div class="v">'+won(cpa)+'원</div><div class="l">예상 CPA</div></div>'+
-      '</div><div class="perfnote">※ 예시 단가(CPC '+won(c.cpc)+'원)·CTR·전환율 기반 추정. 실제 토스 레퍼런스 연동 시 정확 예상치로 교체.</div>';
+      '</div><div class="perfnote">※ 예시 단가<span style="display:inline-block">(CPC '+won(c.cpc)+'원)</span>·CTR·전환율 기반 추정. 실제 토스 레퍼런스 연동 시 정확 예상치로 교체.</div>';
   }
   function norm(s){ return (s||'').toLowerCase().replace(/\s+/g,''); }
   function refSearch(q){
