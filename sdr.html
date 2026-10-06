@@ -122,7 +122,7 @@
       <div class="step"><div class="n">STEP 2</div><div class="t">상황 파악</div><div class="d">지금 어떤 광고를? 왜 토스에 관심?</div></div>
       <div class="step"><div class="n">STEP 3</div><div class="t">핵심 진단</div><div class="d">시기·예산·니즈·목적 중심.</div></div>
       <div class="step"><div class="n">STEP 4</div><div class="t">핏 체크</div><div class="d">타겟·업종이 토스 유저층과 맞는지.</div></div>
-      <div class="step"><div class="n">STEP 5</div><div class="t">넥스트스텝</div><div class="d">핫=AM 연결 / 웜=자료+리마인드.</div></div>
+      <div class="step"><div class="n">STEP 5</div><div class="t">넥스트스텝</div><div class="d">리드 품질 평가 → AM에 상담자료 전달.</div></div>
     </div>
 
     <div class="script">
@@ -149,10 +149,10 @@
 
     <h3 style="font-size:16px;font-weight:800;margin:22px 0 8px;">등급별 다음 단계</h3>
     <table class="t">
-      <tr><th style="width:92px">등급</th><th style="width:110px">점수 기준</th><th>다음 단계</th></tr>
-      <tr><td class="g">핫 (A)</td><td><b>82점 이상</b></td><td><b>즉시 AM 미팅 연결</b> + 핸드오프 노트(목적·일정·예산·성과목표)</td></tr>
-      <tr><td class="b">웜 (B)</td><td><b>55 ~ 81점</b></td><td>제안자료 발송 → 집행 시기 임박 시점에 <b>재콜해 A로 승급</b></td></tr>
-      <tr><td class="r">콜드 (C)</td><td><b>54점 이하</b></td><td>뉴스레터 너처링 → <b>분기 리터치</b> (시기·예산 시그널 변화 시 재스코어링)</td></tr>
+      <tr><th style="width:84px">등급</th><th style="width:230px">등급 조건</th><th>다음 단계</th></tr>
+      <tr><td class="g">핫 (A)</td><td><b>3개월 내 집행 + 월 300만+</b> (두 조건 모두 충족)</td><td><b>리드 품질 평가 → AM에 상담자료(핸드오프 노트) 전달</b> → 미팅 연결</td></tr>
+      <tr><td class="b">웜 (B)</td><td>두 조건 중 <b>하나만</b> 충족</td><td>제안자료 발송 → 집행 시기 임박 시점에 <b>재콜해 A로 승급</b></td></tr>
+      <tr><td class="r">콜드 (C)</td><td>두 조건 <b>모두 미충족</b></td><td>뉴스레터 너처링 → <b>분기 리터치</b> (시그널 변화 시 재스코어링)</td></tr>
     </table>
     <p class="note-sm">※ <b>핫 리드인데 AM 미팅이 당장 어려우면</b> — 리드를 식히지 않는 게 핵심: ① 24h 내 SDR가 먼저 유선으로 니즈·목표 재확인(방치 느낌 차단) ② 업종 성공사례 + 제안 요약 즉시 발송 ③ AM 가능한 가장 빠른 슬롯 2~3개를 제시해 미팅 날짜부터 선확정 ④ AM에게 '우선 핫리드'로 플래그해 대기열 최상단 배치.</p>
 
@@ -182,29 +182,57 @@
   <div class="wrap">
     <div class="jd-tag">JD · 우선순위 등급으로 분류</div>
     <h2 class="sec">② 리드 스코어링 — 집행 시기 × 예산</h2>
-    <p class="sec-sub">리드는 <b>① 집행 시기</b>(가장 중요)와 <b>② 월 예산 규모</b> 두 축으로만 점수화합니다. 지금 집행할 리드가 아니면 아무리 예산이 커도 AM 리소스를 쓸 수 없고, 반대로 시기가 임박해도 예산이 받쳐줘야 제안이 성립하기 때문입니다. 아래에서 직접 바꿔보세요.</p>
+    <p class="sec-sub">핵심은 <b>① 집행 시기 + ② 월 예산(90점)</b>이고, 등급은 점수 컷이 아니라 <b>"3개월 내 집행 AND 월 300만+"</b>라는 조건으로 정합니다(그래야 "왜 핫인지"가 설명됨). 니즈·전환추적·지속의지(③④⑤, 10점)는 <b>동점을 가르는 정밀 조정</b>입니다. 아래에서 직접 바꿔보세요.</p>
 
     <div class="scorer">
       <div class="inputs">
         <div class="fld">
-          <label>광고 집행 시기 <span class="w">· 가장 중요 · 최대 60점</span></label>
+          <label>① 광고 집행 시기 <span class="w">· 핵심 · 최대 54점</span></label>
           <select id="timeline">
-            <option value="60" selected>3개월 이내</option>
-            <option value="40">6개월 이내</option>
-            <option value="22">1년 이내</option>
-            <option value="8">1년 이후 · 미정</option>
+            <option value="54" selected>2주 이내 (즉시)</option>
+            <option value="46">1개월 이내</option>
+            <option value="38">3개월 이내</option>
+            <option value="24">6개월 이내</option>
+            <option value="12">1년 이내</option>
+            <option value="4">1년 이후 · 미정</option>
           </select>
         </div>
         <div class="fld">
-          <label>월 집행 예산 규모 <span class="w">· 최대 40점</span></label>
+          <label>② 월 집행 예산 <span class="w">· 핵심 · 최대 36점</span></label>
           <select id="budget">
-            <option value="40">1,000만원 이상</option>
-            <option value="30" selected>300만 ~ 1,000만원 미만</option>
-            <option value="18">100만 ~ 300만원</option>
-            <option value="6">100만원 미만</option>
+            <option value="36">3,000만원 이상</option>
+            <option value="29">1,000만 ~ 3,000만원</option>
+            <option value="22" selected>500만 ~ 1,000만원</option>
+            <option value="15">300만 ~ 500만원</option>
+            <option value="8">100만 ~ 300만원</option>
+            <option value="3">100만원 미만</option>
           </select>
         </div>
-        <p class="note-sm" style="margin-top:4px;">그 외(광고 목적·캠페인 일정·성과 목표)는 점수화하지 않고 <b>AM 전달용으로 함께 수집</b>합니다.</p>
+        <div class="fld">
+          <label>③ 니즈 강도 <span class="w">· 정밀 조정 · 최대 4점</span></label>
+          <select id="need">
+            <option value="4" selected>명확한 목표 + 현 채널 불만</option>
+            <option value="2">목표는 있으나 모호</option>
+            <option value="0">단순 탐색</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>④ 전환 추적 세팅 <span class="w">· 정밀 조정 · 최대 3점</span></label>
+          <select id="tracking">
+            <option value="3" selected>세팅됨 (픽셀·CAPI)</option>
+            <option value="1">도입 예정</option>
+            <option value="0">없음</option>
+          </select>
+        </div>
+        <div class="fld">
+          <label>⑤ 지속 집행 의지 <span class="w">· 정밀 조정 · 최대 3점</span></label>
+          <select id="intent">
+            <option value="3" selected>지속 · 확대 의향</option>
+            <option value="1">단건 테스트</option>
+            <option value="0">불명</option>
+          </select>
+        </div>
+        <p class="note-sm" style="margin-top:4px;">①② = <b>핵심 90점 + 등급 결정</b>, ③④⑤ = <b>정밀 조정 10점(동점 해소)</b>. 광고 목적·일정은 등급과 무관해 AM 전달용으로 별도 수집.</p>
       </div>
 
       <div class="result" id="resultCard">
@@ -216,40 +244,55 @@
       </div>
     </div>
 
-    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">스코어링 기준표</h3>
+    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">스코어링 기준표 (핵심 90 + 정밀 10)</h3>
     <div class="rubric" style="display:grid;grid-template-columns:1fr 1fr;gap:16px;align-items:start;">
       <table class="t">
-        <tr><th>집행 시기</th><th style="width:72px">점수</th></tr>
-        <tr><td>3개월 이내</td><td class="b">60</td></tr>
-        <tr><td>6개월 이내</td><td class="b">40</td></tr>
-        <tr><td>1년 이내</td><td class="b">22</td></tr>
-        <tr><td>1년 이후 · 미정</td><td class="b">8</td></tr>
+        <tr><th>① 집행 시기</th><th style="width:64px">점수</th></tr>
+        <tr><td>2주 이내 (즉시)</td><td class="b">54</td></tr>
+        <tr><td>1개월 이내</td><td class="b">46</td></tr>
+        <tr><td>3개월 이내</td><td class="b">38</td></tr>
+        <tr><td>6개월 이내</td><td class="b">24</td></tr>
+        <tr><td>1년 이내</td><td class="b">12</td></tr>
+        <tr><td>1년 이후 · 미정</td><td class="b">4</td></tr>
       </table>
       <table class="t">
-        <tr><th>월 예산 규모</th><th style="width:72px">점수</th></tr>
-        <tr><td>1,000만원 이상</td><td class="b">40</td></tr>
-        <tr><td>300만 ~ 1,000만 미만</td><td class="b">30</td></tr>
-        <tr><td>100만 ~ 300만</td><td class="b">18</td></tr>
-        <tr><td>100만원 미만</td><td class="b">6</td></tr>
+        <tr><th>② 월 예산</th><th style="width:64px">점수</th></tr>
+        <tr><td>3,000만원 이상</td><td class="b">36</td></tr>
+        <tr><td>1,000만 ~ 3,000만</td><td class="b">29</td></tr>
+        <tr><td>500만 ~ 1,000만</td><td class="b">22</td></tr>
+        <tr><td>300만 ~ 500만</td><td class="b">15</td></tr>
+        <tr><td>100만 ~ 300만</td><td class="b">8</td></tr>
+        <tr><td>100만원 미만</td><td class="b">3</td></tr>
       </table>
     </div>
-    <p class="note-sm" style="margin-top:8px;">합산 100점 — <b>핫(A) 82점↑ · 웜(B) 55~81 · 콜드(C) 54↓</b></p>
-
-    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">등급 매트릭스 (집행 시기 × 예산)</h3>
-    <table class="t matrix">
-      <tr><th>시기 ＼ 예산</th><th>1,000만+</th><th>300~1,000만</th><th>100~300만</th><th>100만 미만</th></tr>
-      <tr><td><b>3개월 이내</b></td><td class="g">핫 100</td><td class="g">핫 90</td><td class="b">웜 78</td><td class="b">웜 66</td></tr>
-      <tr><td><b>6개월 이내</b></td><td class="b">웜 80</td><td class="b">웜 70</td><td class="b">웜 58</td><td class="r">콜드 46</td></tr>
-      <tr><td><b>1년 이내</b></td><td class="b">웜 62</td><td class="r">콜드 52</td><td class="r">콜드 40</td><td class="r">콜드 28</td></tr>
-      <tr><td><b>1년 이후·미정</b></td><td class="r">콜드 48</td><td class="r">콜드 38</td><td class="r">콜드 26</td><td class="r">콜드 14</td></tr>
+    <table class="t" style="margin-top:12px;">
+      <tr><th style="width:150px">정밀 조정 (동점 해소)</th><th>구간 · 점수</th></tr>
+      <tr><td>③ 니즈 강도</td><td>명확한 목표+불만 <span class="b">4</span> · 모호 <span class="b">2</span> · 탐색 <span class="b">0</span></td></tr>
+      <tr><td>④ 전환 추적 세팅</td><td>세팅됨(픽셀·CAPI) <span class="b">3</span> · 예정 <span class="b">1</span> · 없음 <span class="b">0</span></td></tr>
+      <tr><td>⑤ 지속 집행 의지</td><td>지속·확대 <span class="b">3</span> · 단건 <span class="b">1</span> · 불명 <span class="b">0</span></td></tr>
     </table>
-    <p class="note-sm"><span style="color:var(--green);font-weight:700">초록=핫</span>(즉시 AM 연결) · <span style="color:var(--blue);font-weight:700">파랑=웜</span>(너처링 후 재콜) · <span style="color:var(--red);font-weight:700">빨강=콜드</span>(분기 리터치). <b>시기를 예산보다 무겁게(60:40)</b> 둔 게 핵심 — 예산이 커도 집행이 1년 뒤면 지금은 콜드입니다.</p>
+    <p class="note-sm" style="margin-top:8px;"><b>등급은 점수 컷이 아니라 조건으로 정함</b> — 핫 = <b>3개월 내 집행 AND 월 300만+</b>(둘 다) · 웜 = 하나만 · 콜드 = 둘 다 아님. 100점 점수는 <b>같은 등급 안에서 처리 순서</b>를 정하는 용도이고, 정밀 조정 10점이 동점을 가릅니다.</p>
+
+    <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">등급 매트릭스 (집행 시기 × 예산, 핵심 점수)</h3>
+    <div style="overflow-x:auto;">
+    <table class="t matrix" style="font-size:12px;">
+      <tr><th>시기 ＼ 예산</th><th>3천+</th><th>1~3천</th><th>5백~1천</th><th>3백~5백</th><th>1백~3백</th><th>1백미만</th></tr>
+      <tr><td><b>2주 이내</b></td><td class="g">핫 90</td><td class="g">핫 83</td><td class="g">핫 76</td><td class="g">핫 69</td><td class="b">웜 62</td><td class="b">웜 57</td></tr>
+      <tr><td><b>1개월</b></td><td class="g">핫 82</td><td class="g">핫 75</td><td class="g">핫 68</td><td class="g">핫 61</td><td class="b">웜 54</td><td class="b">웜 49</td></tr>
+      <tr><td><b>3개월</b></td><td class="g">핫 74</td><td class="g">핫 67</td><td class="g">핫 60</td><td class="g">핫 53</td><td class="b">웜 46</td><td class="b">웜 41</td></tr>
+      <tr><td><b>6개월</b></td><td class="b">웜 60</td><td class="b">웜 53</td><td class="b">웜 46</td><td class="b">웜 39</td><td class="r">콜드 32</td><td class="r">콜드 27</td></tr>
+      <tr><td><b>1년</b></td><td class="b">웜 48</td><td class="b">웜 41</td><td class="b">웜 34</td><td class="b">웜 27</td><td class="r">콜드 20</td><td class="r">콜드 15</td></tr>
+      <tr><td><b>1년 이후</b></td><td class="b">웜 40</td><td class="b">웜 33</td><td class="b">웜 26</td><td class="b">웜 19</td><td class="r">콜드 12</td><td class="r">콜드 7</td></tr>
+    </table>
+    </div>
+    <p class="note-sm"><span style="color:var(--green);font-weight:700">초록=핫</span> · <span style="color:var(--blue);font-weight:700">파랑=웜</span> · <span style="color:var(--red);font-weight:700">빨강=콜드</span>. 핫은 <b>좌상단(3개월 내 × 월 300만+)</b> 블록뿐 — 시기가 6개월 이상 멀면 예산이 아무리 커도 핫이 아니라 '우선순위 높은 웜'입니다(시기 우선). 표 숫자는 핵심 점수(①+②), 실제 점수는 정밀 조정 ③④⑤까지 반영.</p>
 
     <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">같은 등급 안에서의 우선순위 (상세 스코어링)</h3>
     <ul class="clean">
-      <li><b>점수 = 처리 순서 큐</b> — 같은 핫(A)이라도 90점 리드를 82점보다 먼저 인계. 100점 척도를 '등급'뿐 아니라 '오늘 누구부터 콜·인계할지' 우선순위 큐로 씁니다.</li>
-      <li><b>동점 타이브레이크</b> — 점수가 같으면 ① 집행 시기가 더 임박한 리드 → ② 예산이 더 큰 리드 순. (시기를 예산보다 우선하는 60:40 원칙과 동일)</li>
-      <li><b>일일 운영</b> — 매일 핫 → 웜 순, 각 등급 안에서는 점수 내림차순으로 처리. 핫은 유입 당일, 웜은 48h 내 첫 콜.</li>
+      <li><b>점수 = 처리 순서 큐</b> — 같은 핫이라도 90점 리드를 61점보다 먼저 인계. 100점 척도로 '오늘 누구부터 콜·인계할지'를 정합니다.</li>
+      <li><b>동점은 정밀 조정으로 해소</b> — 시기·예산이 같아 핵심 점수가 겹쳐도, 니즈 강도·전환추적·지속 의지(③④⑤, 10점)로 대부분의 동점이 갈립니다.</li>
+      <li><b>그래도 동점이면</b> — ① 집행 시기가 더 임박 → ② 예산이 더 큰 리드 순 (시기 우선 원칙 동일).</li>
+      <li><b>일일 운영</b> — 핫 → 웜 순, 등급 내 점수 내림차순. 핫은 유입 당일, 웜은 48h 내 첫 콜.</li>
     </ul>
   </div>
 </section>
@@ -281,20 +324,23 @@
 </footer>
 
 <script>
-  var F = ['timeline','budget'];
+  var F = ['timeline','budget','need','tracking','intent'];
   function calc(){
-    var s = 0;
-    F.forEach(function(id){ s += parseInt(document.getElementById(id).value,10); });
+    var v = {};
+    F.forEach(function(id){ v[id] = parseInt(document.getElementById(id).value,10); });
+    var s = v.timeline + v.budget + v.need + v.tracking + v.intent;
+    var near = v.timeline >= 38;   // 3개월 이내
+    var decent = v.budget >= 15;   // 월 300만 이상
     var grade, glabel, color, action;
-    if (s >= 82){
-      grade='A등급 · 핫리드'; glabel='즉시 AM에게 인계'; color='#15C47E';
-      action='<b>바로 AM 미팅 연결.</b> 목적·일정·예산·성과목표를 핸드오프 노트로 정리해 24시간 내 미팅 세팅.';
-    } else if (s >= 55){
-      grade='B등급 · 웜리드'; glabel='너처링 후 재콜'; color='#3182F6';
-      action='<b>제안자료 발송 + 리마인드.</b> 집행 시기를 앞당길 여지를 확인하고, 시기가 임박하는 시점에 재콜해 A로 전환.';
+    if (near && decent){
+      grade='A등급 · 핫리드'; glabel='3개월 내 집행 + 월 300만+ (둘 다 충족)'; color='#15C47E';
+      action='<b>리드 품질 평가 → AM에 상담자료(핸드오프 노트) 전달</b> → 미팅 연결. AM 일정 불가 시 24h 내 유선 재확인 + 자료 선발송으로 온도 유지.';
+    } else if (near || decent){
+      grade='B등급 · 웜리드'; glabel='두 조건 중 하나만 충족'; color='#3182F6';
+      action='<b>제안자료 발송 + 리마인드.</b> 시기가 멀면 임박 시점에 재콜, 예산이 작으면 증액 여지를 확인해 A로 승급.';
     } else {
-      grade='C등급 · 콜드리드'; glabel='보류 · 분기 리터치'; color='#F04452';
-      action='<b>너처링 + 분기 리터치.</b> 집행이 멀거나 예산이 작아 지금 AM 리소스를 쓰기엔 이르다 — 시기·예산 시그널이 커지면 재콜.';
+      grade='C등급 · 콜드리드'; glabel='두 조건 모두 미충족'; color='#F04452';
+      action='<b>너처링 + 분기 리터치.</b> 집행이 멀고 예산도 작아 지금 AM 리소스를 쓰기엔 이르다 — 시그널이 커지면 재스코어링.';
     }
     document.getElementById('scoreNum').textContent = s;
     document.getElementById('scoreNum').style.color = color;
