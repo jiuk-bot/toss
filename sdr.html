@@ -81,6 +81,27 @@
   .note-sm{font-size:12.5px;color:var(--muted);margin-top:8px;line-height:1.5;}
   table.matrix th,table.matrix td{text-align:center;white-space:nowrap;}
   @media(max-width:620px){.rubric{grid-template-columns:1fr !important;}}
+  .hypo{background:var(--bg-soft);border:1px solid var(--line);border-left:4px solid var(--blue);
+        border-radius:12px;padding:18px 20px;font-size:14.5px;line-height:1.85;color:var(--ink);}
+  .hypo b.k{color:var(--blue);}
+  .ref-search input{width:100%;padding:13px 16px;border:1px solid var(--line);border-radius:12px;font-size:15px;font-family:inherit;color:var(--ink);}
+  .ref-chips{display:flex;flex-wrap:wrap;gap:8px;margin-top:10px;}
+  .ref-chips button{border:1px solid var(--line);background:#fff;color:var(--body);font-family:inherit;font-size:13px;font-weight:600;padding:7px 12px;border-radius:999px;cursor:pointer;}
+  .ref-chips button:hover{border-color:var(--blue);color:var(--blue);}
+  .ref-card{background:#fff;border:1px solid var(--line);border-radius:16px;padding:22px;margin-top:16px;}
+  .ref-card .rh{font-size:19px;font-weight:800;color:var(--ink);}
+  .ref-card .rtag{display:inline-block;background:var(--blue-weak);color:var(--blue);font-weight:700;font-size:12px;padding:3px 9px;border-radius:999px;margin-left:8px;vertical-align:middle;}
+  .ref-card .rsum{color:var(--body);font-size:14px;margin:8px 0 16px;line-height:1.55;}
+  .ref-metrics{display:grid;grid-template-columns:repeat(4,1fr);gap:10px;margin-bottom:6px;}
+  @media(max-width:640px){.ref-metrics{grid-template-columns:repeat(2,1fr);}}
+  .ref-metrics .m{background:var(--bg-soft);border-radius:12px;padding:12px;text-align:center;}
+  .ref-metrics .m .v{font-size:21px;font-weight:800;color:var(--blue);letter-spacing:-.02em;}
+  .ref-metrics .m .l{font-size:12px;color:var(--muted);margin-top:3px;}
+  .ref-sec{font-size:13px;font-weight:800;color:var(--ink);margin:16px 0 6px;}
+  .ref-prod{display:flex;flex-wrap:wrap;gap:8px;}
+  .ref-prod span{background:#fff;border:1px solid var(--line);border-radius:10px;padding:8px 12px;font-size:13px;color:var(--ink);font-weight:600;}
+  .ref-case{background:var(--bg-soft);border-radius:10px;padding:12px 14px;font-size:13.5px;color:var(--body);line-height:1.55;}
+  .ref-empty{color:var(--muted);font-size:14px;padding:18px 2px;}
 </style>
 </head>
 <body>
@@ -104,11 +125,23 @@
     <h1>인바운드 광고주 리드를 콜로 검증하고,<br /><span class="hl">데이터로 등급을 매겨 AM에게 넘깁니다.</span></h1>
     <p class="lead">
       토스 Ads SDR 업무를 그대로 실행해본 자료입니다. ① 콜로 니즈·예산을 파악하는 <b>퀄리파이 플레이북</b>,
-      ② 리드를 A·B·C로 가르는 <b>실시간 스코어링</b>, ③ 콜에서 핏을 빠르게 판단하는 <b>업종별 핏 가이드</b>.
+      ② 리드를 A·B·C로 가르는 <b>실시간 스코어링</b>, ③ 콜에서 핏을 빠르게 판단하는 <b>업종별 핏 가이드</b>, ④ 상담 중 업종 레퍼런스를 즉시 보여주는 <b>대시보드</b>.
       "리드를 많이 넘기는" 게 아니라 "AM이 바로 제안 들어갈 수 있는 리드만 깨끗하게 넘기는" 걸 목표로 설계했습니다.
     </p>
   </div>
 </header>
+
+<section class="blk" style="padding-top:30px;padding-bottom:30px;">
+  <div class="wrap">
+    <div class="jd-tag">가설 · 이 포트폴리오가 풀려는 문제</div>
+    <h2 class="sec" style="font-size:23px;">1차 상담이 '파악'에 그치면, 2차 AM 미팅 전환에서 병목이 생긴다</h2>
+    <div class="hypo">
+      <b class="k">관찰</b> — 광고주가 상담에서 "우리 업종엔 어떤 상품이 맞나 / 성공사례"를 물어도, 전략·레퍼런스는 2차 AM이 안내. 1차는 니즈 '파악' 위주로 운영됩니다.<br />
+      <b class="k">문제</b> — 광고주에게 AM 미팅도 시간 투자입니다. 여러 매체를 함께 저울질하는 긴 상담 여정에서, 1차에서 약식 소개·성공사례조차 못 받으면 "굳이 미팅까지?"가 되어 <b>2차 전환이 샙니다</b>.<br />
+      <b class="k">해결 (↓ ④번 대시보드)</b> — 상담 중 광고주의 업종을 아는 순간 <b>즉시 유사업종 레퍼런스와 주요 광고상품을 조회</b>해 1차에서 '약식 가치 제공'. "토스에서 이 업종은 이런 상품으로 이런 성과가 났다"를 보여주면 <b>AM 미팅 의향이 올라갑니다</b>.
+    </div>
+  </div>
+</section>
 
 <!-- ───────── 1. 콜 퀄리파이 플레이북 ───────── -->
 <section class="blk">
@@ -182,7 +215,7 @@
   <div class="wrap">
     <div class="jd-tag">JD · 우선순위 등급으로 분류</div>
     <h2 class="sec">② 리드 스코어링 — 집행 시기 × 예산</h2>
-    <p class="sec-sub">핵심은 <b>① 집행 시기 + ② 월 예산(90점)</b>이고, 등급은 점수 컷이 아니라 <b>"3개월 내 집행 AND 월 300만+"</b>라는 조건으로 정합니다(그래야 "왜 핫인지"가 설명됨). 니즈·전환추적·지속의지(③④⑤, 10점)는 <b>동점을 가르는 정밀 조정</b>입니다. 아래에서 직접 바꿔보세요.</p>
+    <p class="sec-sub">핵심은 <b>① 집행 시기 + ② 월 예산(90점)</b>이고, 등급은 점수 컷이 아니라 <b>"3개월 내 집행 AND 월 300만+"</b>라는 조건으로 정합니다(그래야 "왜 핫인지"가 설명됨). 광고 계획 구체성·지속의지(③④, 10점)는 <b>동점을 가르는 정밀 조정</b>입니다. 아래에서 직접 바꿔보세요.</p>
 
     <div class="scorer">
       <div class="inputs">
@@ -209,30 +242,22 @@
           </select>
         </div>
         <div class="fld">
-          <label>③ 니즈 강도 <span class="w">· 정밀 조정 · 최대 4점</span></label>
-          <select id="need">
-            <option value="4" selected>명확한 목표 + 현 채널 불만</option>
-            <option value="2">목표는 있으나 모호</option>
-            <option value="0">단순 탐색</option>
+          <label>③ 광고 계획 구체성 <span class="w">· 정밀 조정 · 최대 6점</span></label>
+          <select id="plan">
+            <option value="6" selected>이미 고려 중인 광고상품 있음</option>
+            <option value="3">안내받고 싶다</option>
+            <option value="0">불명확</option>
           </select>
         </div>
         <div class="fld">
-          <label>④ 전환 추적 세팅 <span class="w">· 정밀 조정 · 최대 3점</span></label>
-          <select id="tracking">
-            <option value="3" selected>세팅됨 (픽셀·CAPI)</option>
-            <option value="1">도입 예정</option>
-            <option value="0">없음</option>
-          </select>
-        </div>
-        <div class="fld">
-          <label>⑤ 지속 집행 의지 <span class="w">· 정밀 조정 · 최대 3점</span></label>
+          <label>④ 지속 집행 의지 <span class="w">· 정밀 조정 · 최대 4점</span></label>
           <select id="intent">
-            <option value="3" selected>지속 · 확대 의향</option>
-            <option value="1">단건 테스트</option>
+            <option value="4" selected>지속 · 확대 의향</option>
+            <option value="2">단건 테스트</option>
             <option value="0">불명</option>
           </select>
         </div>
-        <p class="note-sm" style="margin-top:4px;">①② = <b>핵심 90점 + 등급 결정</b>, ③④⑤ = <b>정밀 조정 10점(동점 해소)</b>. 광고 목적·일정은 등급과 무관해 AM 전달용으로 별도 수집.</p>
+        <p class="note-sm" style="margin-top:4px;">①② = <b>핵심 90점 + 등급 결정</b>, ③④ = <b>정밀 조정 10점(동점 해소)</b>. 광고 목적·일정은 등급과 무관해 AM 전달용으로 별도 수집.</p>
       </div>
 
       <div class="result" id="resultCard">
@@ -267,9 +292,8 @@
     </div>
     <table class="t" style="margin-top:12px;">
       <tr><th style="width:150px">정밀 조정 (동점 해소)</th><th>구간 · 점수</th></tr>
-      <tr><td>③ 니즈 강도</td><td>명확한 목표+불만 <span class="b">4</span> · 모호 <span class="b">2</span> · 탐색 <span class="b">0</span></td></tr>
-      <tr><td>④ 전환 추적 세팅</td><td>세팅됨(픽셀·CAPI) <span class="b">3</span> · 예정 <span class="b">1</span> · 없음 <span class="b">0</span></td></tr>
-      <tr><td>⑤ 지속 집행 의지</td><td>지속·확대 <span class="b">3</span> · 단건 <span class="b">1</span> · 불명 <span class="b">0</span></td></tr>
+      <tr><td>③ 광고 계획 구체성</td><td>이미 고려 중인 광고상품 있음 <span class="b">6</span> · 안내받고 싶다 <span class="b">3</span> · 불명확 <span class="b">0</span></td></tr>
+      <tr><td>④ 지속 집행 의지</td><td>지속·확대 <span class="b">4</span> · 단건 <span class="b">2</span> · 불명 <span class="b">0</span></td></tr>
     </table>
     <p class="note-sm" style="margin-top:8px;"><b>등급은 점수 컷이 아니라 조건으로 정함</b> — 핫 = <b>3개월 내 집행 AND 월 300만+</b>(둘 다) · 웜 = 하나만 · 콜드 = 둘 다 아님. 100점 점수는 <b>같은 등급 안에서 처리 순서</b>를 정하는 용도이고, 정밀 조정 10점이 동점을 가릅니다.</p>
 
@@ -290,7 +314,7 @@
     <h3 style="font-size:16px;font-weight:800;margin:26px 0 8px;">같은 등급 안에서의 우선순위 (상세 스코어링)</h3>
     <ul class="clean">
       <li><b>점수 = 처리 순서 큐</b> — 같은 핫이라도 90점 리드를 61점보다 먼저 인계. 100점 척도로 '오늘 누구부터 콜·인계할지'를 정합니다.</li>
-      <li><b>동점은 정밀 조정으로 해소</b> — 시기·예산이 같아 핵심 점수가 겹쳐도, 니즈 강도·전환추적·지속 의지(③④⑤, 10점)로 대부분의 동점이 갈립니다.</li>
+      <li><b>동점은 정밀 조정으로 해소</b> — 시기·예산이 같아 핵심 점수가 겹쳐도, 광고 계획 구체성·지속 의지(③④, 10점)로 대부분의 동점이 갈립니다.</li>
       <li><b>그래도 동점이면</b> — ① 집행 시기가 더 임박 → ② 예산이 더 큰 리드 순 (시기 우선 원칙 동일).</li>
       <li><b>일일 운영</b> — 핫 → 웜 순, 등급 내 점수 내림차순. 핫은 유입 당일, 웜은 48h 내 첫 콜.</li>
     </ul>
@@ -316,6 +340,20 @@
   </div>
 </section>
 
+<!-- ───────── 4. 업종 레퍼런스 대시보드 ───────── -->
+<section class="blk section-soft">
+  <div class="wrap">
+    <div class="jd-tag">가설의 해결책 · 직접 개발 (프로토타입)</div>
+    <h2 class="sec">④ 업종 레퍼런스 즉시 조회 대시보드</h2>
+    <p class="sec-sub">상담 중 광고주의 업종을 알게 되면 바로 검색 → 유사업종 레퍼런스 지표와 주요 광고상품을 보여줍니다. 1차 콜에서 '약식 가치 제공'을 해 AM 미팅 의향을 높이는 게 목적입니다. 직접 검색해 보세요. <b>(※ 예시 데이터 — 실제 토스 광고상품 소개서·레퍼런스 연동 시 그대로 교체)</b></p>
+    <div class="ref-search">
+      <input id="refInput" placeholder="업종 검색 (예: 치과, 이커머스, 보험, 앱, 교육)" autocomplete="off" />
+      <div class="ref-chips" id="refChips"></div>
+    </div>
+    <div id="refResult"></div>
+  </div>
+</section>
+
 <footer>
   <div class="wrap">
     <div>© 2026 윤지욱 (JIUK.YOON) · 세일즈 · 리드 (SDR)</div>
@@ -324,11 +362,11 @@
 </footer>
 
 <script>
-  var F = ['timeline','budget','need','tracking','intent'];
+  var F = ['timeline','budget','plan','intent'];
   function calc(){
     var v = {};
     F.forEach(function(id){ v[id] = parseInt(document.getElementById(id).value,10); });
-    var s = v.timeline + v.budget + v.need + v.tracking + v.intent;
+    var s = v.timeline + v.budget + v.plan + v.intent;
     var near = v.timeline >= 38;   // 3개월 이내
     var decent = v.budget >= 15;   // 월 300만 이상
     var grade, glabel, color, action;
@@ -355,6 +393,72 @@
   }
   F.forEach(function(id){ document.getElementById(id).addEventListener('change', calc); });
   calc();
+
+  // ── ④ 업종 레퍼런스 대시보드 (예시 데이터) ──
+  var REF = {
+    '치과 · 병의원': {alias:['치과','병원','의원','임플란트','교정','병의원','의료'],
+      tag:'병의원 · 지역 고관여',
+      sum:'지역 기반 신규 환자(임플란트·교정 등) 상담 유도. 고관여·고객단가가 높아 리드 1건 가치가 큼.',
+      metrics:[['1.2%','평균 CTR'],['3.6%','상담 전환율'],['4.2만원','평균 상담단가'],['40~60대','주 타겟']],
+      prod:['토스 홈 피드 (지역 타겟)','혜택 탭 리워드형','검색·브랜드 지면'],
+      cs:'지역 치과 A — 피드+리워드 병행으로 상담단가 약 28% 개선 (예시)'},
+    '이커머스 · 쇼핑': {alias:['이커머스','커머스','쇼핑','쇼핑몰','리테일','패션','구매'],
+      tag:'성과형 · 구매 전환',
+      sum:'구매·재구매 전환 중심. 전환 추적 기반 ROAS 최적화 수요가 큽니다.',
+      metrics:[['1.5%','평균 CTR'],['2.8%','구매 전환율'],['320%','평균 ROAS'],['20~40대','주 타겟']],
+      prod:['토스 홈 피드','토스페이 결제 연계','리워드형 프로모션'],
+      cs:'패션 커머스 B — 결제 연계 소재로 ROAS 약 1.4배 (예시)'},
+    '금융 · 보험': {alias:['금융','보험','대출','투자','카드','증권'],
+      tag:'고관여 · 리드',
+      sum:'토스 유저 맥락과 가장 잘 맞는 고관여 상품. 리드 단가 수용도 높고 지속 집행 성향.',
+      metrics:[['0.9%','평균 CTR'],['4.1%','가입/상담률'],['높음','리드단가 수용'],['30~50대','주 타겟']],
+      prod:['토스 홈 피드','금융 맥락 지면','브랜드 검색'],
+      cs:'보험 C — 금융 맥락 지면에서 가입단가 약 22% 개선 (예시)'},
+    '앱 · 핀테크': {alias:['앱','어플','설치','핀테크','스타트업','구독','서비스'],
+      tag:'앱 설치 · 가입',
+      sum:'앱 설치·회원가입 전환에 강점. CPI/CPA 목표가 명확한 광고주에 적합.',
+      metrics:[['1.8%','평균 CTR'],['가입·설치','전환 유형'],['CPI 효율','강점'],['20~40대','주 타겟']],
+      prod:['토스 홈 피드 (설치형)','리워드형 가입','혜택 탭'],
+      cs:'구독앱 D — 리워드형 가입으로 CPI 약 30% 개선 (예시)'},
+    '교육': {alias:['교육','학원','인강','에듀','강의','자격증'],
+      tag:'상담 · 등록',
+      sum:'학부모·성인 학습자 대상 상담/수강 등록 유도. 시즌성이 강합니다.',
+      metrics:[['1.3%','평균 CTR'],['3.2%','상담 전환율'],['시즌성','집행 특성'],['30~50대','주 타겟']],
+      prod:['토스 홈 피드','혜택 탭','브랜드 콘텐츠'],
+      cs:'교육 E — 시즌 집중 집행으로 상담수 약 1.6배 (예시)'}
+  };
+  function refRender(key){
+    var r = REF[key], box = document.getElementById('refResult');
+    if(!r){ box.innerHTML = '<div class="ref-empty">검색 결과가 없습니다. 아래 버튼에서 골라보세요. (예시: 치과, 이커머스, 보험, 앱, 교육)</div>'; return; }
+    var m = r.metrics.map(function(x){ return '<div class="m"><div class="v">'+x[0]+'</div><div class="l">'+x[1]+'</div></div>'; }).join('');
+    var p = r.prod.map(function(x){ return '<span>'+x+'</span>'; }).join('');
+    box.innerHTML =
+      '<div class="ref-card"><div class="rh">'+key+'<span class="rtag">'+r.tag+'</span></div>'+
+      '<div class="rsum">'+r.sum+'</div>'+
+      '<div class="ref-sec">레퍼런스 지표 (예시)</div><div class="ref-metrics">'+m+'</div>'+
+      '<div class="ref-sec">추천 광고상품</div><div class="ref-prod">'+p+'</div>'+
+      '<div class="ref-sec">유사 성공사례</div><div class="ref-case">'+r.cs+'</div></div>';
+  }
+  function refSearch(q){
+    q = (q||'').trim().toLowerCase();
+    if(!q){ document.getElementById('refResult').innerHTML=''; return; }
+    var keys = Object.keys(REF);
+    for(var i=0;i<keys.length;i++){
+      var k = keys[i], r = REF[k];
+      if(k.toLowerCase().indexOf(q)>=0 || r.alias.some(function(a){ a=a.toLowerCase(); return a.indexOf(q)>=0 || q.indexOf(a)>=0; })){ refRender(k); return; }
+    }
+    refRender(null);
+  }
+  (function(){
+    var chips = document.getElementById('refChips');
+    if(chips){ Object.keys(REF).forEach(function(k){
+      var b=document.createElement('button'); b.textContent=k.split(' · ')[0];
+      b.addEventListener('click',function(){ document.getElementById('refInput').value=k.split(' · ')[0]; refRender(k); });
+      chips.appendChild(b);
+    }); }
+    var inp=document.getElementById('refInput');
+    if(inp){ inp.addEventListener('input',function(){ refSearch(this.value); }); }
+  })();
 </script>
 
 </body>
